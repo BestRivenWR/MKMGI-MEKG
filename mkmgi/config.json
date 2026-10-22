@@ -1,0 +1,82 @@
+{
+  "release": "MKMGI_GCN_TimeAttention_20261002",
+  "seeds": [
+    20261001,
+    20261002,
+    20261003
+  ],
+  "outer_folds": 5,
+  "inner_folds": 4,
+  "hidden": 64,
+  "layers": 2,
+  "residual_alpha": 0.1,
+  "weight_decay": 0.001,
+  "max_epochs": 160,
+  "minimum_epochs": 20,
+  "check_every": 5,
+  "patience_checks": 6,
+  "annotation_components": 32,
+  "annotation_min_df": 3,
+  "protein_components": 32,
+  "preprocessing_seed": 2026100211,
+  "time_width": 32,
+  "time_heads": 4,
+  "time_layers": 1,
+  "time_feedforward": 64,
+  "time_chunk_size": 4096,
+  "DAP": [
+    9,
+    12,
+    15,
+    18,
+    21,
+    24,
+    27,
+    30
+  ],
+  "grid": [
+    {
+      "lr": 0.001,
+      "dropout": 0.1
+    },
+    {
+      "lr": 0.001,
+      "dropout": 0.3
+    },
+    {
+      "lr": 0.001,
+      "dropout": 0.5
+    },
+    {
+      "lr": 0.003,
+      "dropout": 0.1
+    },
+    {
+      "lr": 0.003,
+      "dropout": 0.3
+    },
+    {
+      "lr": 0.003,
+      "dropout": 0.5
+    }
+  ],
+  "conditions80": [
+    "time_attention",
+    "time_mean",
+    "time_no_pos",
+    "no_message",
+    "gcn_rewired"
+  ],
+  "registered_main": "time_attention",
+  "threads": 8,
+  "rewire_swaps_per_edge": 3,
+  "rewire_attempts_per_requested_swap": 30,
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 2026100129,
+  "matched_draws": 10,
+  "matched_U_per_P": 3,
+  "minimum_useful_AP_gain": 0.01,
+  "nonPPR_AP_tolerance": 0.005,
+  "PPR_AUROC_tolerance": 0.01,
+  "target_AUROC": 0.8
+}

@@ -1,0 +1,109 @@
+{
+  "seeds": [
+    20261001,
+    20261002,
+    20261003
+  ],
+  "threads": 8,
+  "ablation_conditions": [
+    "drop_omics",
+    "drop_spatial",
+    "drop_function",
+    "drop_protein",
+    "drop_graph_all",
+    "drop_RNA",
+    "drop_ATAC",
+    "drop_H3K4me3",
+    "drop_H3K27me3",
+    "drop_H3K27ac",
+    "drop_sequence",
+    "drop_ESM",
+    "no_time_transformer",
+    "gcn_1layer"
+  ],
+  "existing_conditions": [
+    "time_attention",
+    "bg_concat",
+    "ExtraTrees_background",
+    "time_mean",
+    "time_no_pos",
+    "no_message",
+    "gcn_rewired"
+  ],
+  "new_baselines": [
+    "RandomForest",
+    "LinearSVM"
+  ],
+  "random_forest_estimators": 300,
+  "random_forest_grid": [
+    {
+      "max_features": "sqrt",
+      "min_samples_leaf": 1
+    },
+    {
+      "max_features": "sqrt",
+      "min_samples_leaf": 5
+    },
+    {
+      "max_features": 0.5,
+      "min_samples_leaf": 1
+    },
+    {
+      "max_features": 0.5,
+      "min_samples_leaf": 5
+    }
+  ],
+  "linear_svm_grid": [
+    {
+      "C": 0.01
+    },
+    {
+      "C": 0.1
+    },
+    {
+      "C": 1.0
+    }
+  ],
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 2026100129,
+  "k_grid": [
+    10,
+    20,
+    50,
+    100
+  ],
+  "comparison_families": {
+    "methods": [
+      "bg_concat",
+      "ExtraTrees_background",
+      "RandomForest",
+      "LinearSVM"
+    ],
+    "data": [
+      "drop_omics",
+      "drop_spatial",
+      "drop_function",
+      "drop_protein",
+      "drop_graph_all"
+    ],
+    "individual_omics": [
+      "drop_RNA",
+      "drop_ATAC",
+      "drop_H3K4me3",
+      "drop_H3K27me3",
+      "drop_H3K27ac"
+    ],
+    "protein_split": [
+      "drop_sequence",
+      "drop_ESM"
+    ],
+    "structure": [
+      "no_time_transformer",
+      "time_mean",
+      "time_no_pos",
+      "gcn_1layer",
+      "no_message",
+      "gcn_rewired"
+    ]
+  }
+}

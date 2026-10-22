@@ -1,0 +1,5 @@
+# Additional readers for graph construction; original scientific core versions.
+numpy==1.26.3
+scipy==1.13.0
+h5py
+# Optional author-final cell-summary export: R with Seurat and Matrix.

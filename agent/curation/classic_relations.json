@@ -1,0 +1,97 @@
+[
+  {
+    "source_symbol": "O2", "target_symbol": "22-kD alpha-zein genes", "relation": "ACTIVATES",
+    "support_level": "binding_and_functional", "doi": "10.1105/tpc.5.8.831",
+    "title": "Dominant Negative Mutants of Opaque2 Suppress Transactivation of a 22-kD Zein Promoter by Opaque2 in Maize Endosperm Cells",
+    "finding": "1993年研究在玉米胚乳悬浮培养细胞和完整胚乳纵切片中证明，O2可激活22-kD zein启动子；O2结构域缺失的显性负效应构建可抑制该激活。不是把全部zein成员逐一验证的声明。",
+    "quote": "O2 is capable of transactivating a 22-kD zein promoter",
+    "assays": ["胚乳体系微粒轰击与启动子转录激活", "O2结构域缺失与显性负效应", "EMSA与免疫沉淀"],
+    "tissue": "玉米胚乳悬浮培养细胞及完整胚乳纵切片", "stage": "所取摘要未逐一注明DAP", "genotype": "摘要未明确自交系",
+    "audit": "人工核对原始研究摘要；2026-10-08；未宣称逐图全文审计",
+    "limitations": "靶标为文献所研究的22-kD zein启动子/类别，未编造单个v5成员编号；该结果不是本项目实验。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "PBF", "relation": "PROTEIN_INTERACTION",
+    "support_level": "protein_interaction", "doi": "10.1073/pnas.94.14.7685",
+    "title": "A maize zinc-finger protein binds the prolamin box in zein gene promoters and interacts with the basic leucine zipper transcriptional activator Opaque2",
+    "finding": "1997年研究报告PBF在体外与O2蛋白互作，并在凝胶迁移实验中识别zein启动子的P-box。这是蛋白互作关系，不是O2转录调控PBF的证据。",
+    "quote": "PBF interacts in vitro with the basic leucine zipper protein Opaque2",
+    "assays": ["体外蛋白互作", "PBF的P-box凝胶迁移实验"],
+    "tissue": "玉米胚乳及体外实验", "stage": "摘要未注明DAP", "genotype": "摘要未明确自交系",
+    "audit": "人工核对原始研究摘要；2026-10-08",
+    "limitations": "互作按无向关系显示；PBF识别P-box不替代O2对某一靶标的结合证据。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "PPDK1", "relation": "ACTIVATES",
+    "support_level": "promoter_functional", "doi": "10.1073/pnas.1613721113",
+    "title": "Maize endosperm-specific transcription factors O2 and PBF network the regulation of protein and starch synthesis",
+    "finding": "2016年研究报告PPDK1、PPDK2和SSIII在o2/PbfRNAi材料中的表达及蛋白变化，并显示这些启动子上的P-box和O2-box可被PBF与O2加性转录激活。这里保留启动子功能支持，不仅凭本轮摘要宣称逐靶标结合实验已完整核验。",
+    "quote": "an O2 box that can be additively transactivated by PBF and O2",
+    "assays": ["o2、PbfRNAi及双突变材料", "转录组和蛋白丰度", "启动子转录激活"],
+    "tissue": "玉米胚乳", "stage": "具体时期需原文核对", "genotype": "o2、PbfRNAi与PbfRNAi;o2；摘要未明确全部背景",
+    "audit": "人工核对原始研究摘要和三靶标上下文；2026-10-08",
+    "limitations": "联合两个TF的结果按原文保留，不将协同/加性作用写成O2单独解释全部淀粉变化。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "PPDK2", "relation": "ACTIVATES",
+    "support_level": "promoter_functional", "doi": "10.1073/pnas.1613721113",
+    "title": "Maize endosperm-specific transcription factors O2 and PBF network the regulation of protein and starch synthesis",
+    "finding": "2016年研究报告PPDK1、PPDK2和SSIII在o2/PbfRNAi材料中的表达及蛋白变化，并显示这些启动子上的P-box和O2-box可被PBF与O2加性转录激活。这里保留启动子功能支持，不仅凭本轮摘要宣称逐靶标结合实验已完整核验。",
+    "quote": "an O2 box that can be additively transactivated by PBF and O2",
+    "assays": ["o2、PbfRNAi及双突变材料", "转录组和蛋白丰度", "启动子转录激活"],
+    "tissue": "玉米胚乳", "stage": "具体时期需原文核对", "genotype": "o2、PbfRNAi与PbfRNAi;o2；摘要未明确全部背景",
+    "audit": "人工核对原始研究摘要和三靶标上下文；2026-10-08",
+    "limitations": "同一研究的多个靶标不是独立研究重复。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "SSIII", "relation": "ACTIVATES",
+    "support_level": "promoter_functional", "doi": "10.1073/pnas.1613721113",
+    "title": "Maize endosperm-specific transcription factors O2 and PBF network the regulation of protein and starch synthesis",
+    "finding": "2016年研究报告PPDK1、PPDK2和SSIII在o2/PbfRNAi材料中的表达及蛋白变化，并显示这些启动子上的P-box和O2-box可被PBF与O2加性转录激活。这里保留启动子功能支持，不仅凭本轮摘要宣称逐靶标结合实验已完整核验。",
+    "quote": "an O2 box that can be additively transactivated by PBF and O2",
+    "assays": ["o2、PbfRNAi及双突变材料", "转录组和蛋白丰度", "启动子转录激活"],
+    "tissue": "玉米胚乳", "stage": "具体时期需原文核对", "genotype": "o2、PbfRNAi与PbfRNAi;o2；摘要未明确全部背景",
+    "audit": "人工核对原始研究摘要和三靶标上下文；2026-10-08",
+    "limitations": "原文SSIII命名保留；未确认唯一v5映射时显示原文symbol，不猜测基因编号。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "SSIIa", "relation": "PERTURBATION_RESPONSE",
+    "support_level": "perturbation_response", "doi": "10.1073/pnas.1613721113",
+    "title": "Maize endosperm-specific transcription factors O2 and PBF network the regulation of protein and starch synthesis",
+    "finding": "2016年研究明确区分了SSIIa/SBEI与上述启动子靶标：它们不是被PBF和O2直接调控的对象，但蛋白丰度在o2及双突变材料中下降。按间接响应显示，不能画成直接激活。",
+    "quote": "are not directly regulated by PBF and O2",
+    "assays": ["突变材料蛋白丰度比较"], "tissue": "玉米胚乳", "stage": "具体时期需原文核对", "genotype": "o2及PbfRNAi;o2",
+    "audit": "人工核对原始研究摘要的否定性直接调控表述；2026-10-08",
+    "limitations": "显示分子响应，不声称O2直接结合并调控SSIIa。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "SBEI", "relation": "PERTURBATION_RESPONSE",
+    "support_level": "perturbation_response", "doi": "10.1073/pnas.1613721113",
+    "title": "Maize endosperm-specific transcription factors O2 and PBF network the regulation of protein and starch synthesis",
+    "finding": "2016年研究明确区分了SSIIa/SBEI与上述启动子靶标：它们不是被PBF和O2直接调控的对象，但蛋白丰度在o2及双突变材料中下降。按间接响应显示，不能画成直接激活。",
+    "quote": "are not directly regulated by PBF and O2",
+    "assays": ["突变材料蛋白丰度比较"], "tissue": "玉米胚乳", "stage": "具体时期需原文核对", "genotype": "o2及PbfRNAi;o2",
+    "audit": "人工核对原始研究摘要的否定性直接调控表述；2026-10-08",
+    "limitations": "显示分子响应，不声称O2直接结合并调控SBEI。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "NKD2", "relation": "CANDIDATE_DIRECT_TARGET",
+    "support_level": "high_throughput_candidate", "doi": "10.1105/tpc.18.00392",
+    "title": "Opaque-2 Regulates a Complex Gene Network Associated with Cell Differentiation and Storage Functions of Maize Endosperm",
+    "finding": "2018年B73/B73 o2研究整合O2结合与差异表达，得到186个推定直接靶标和1677个间接靶标，并在摘要报告O2激活NKD2与bZIP17。186个靶标不能全部视为逐一功能验证；本条保留候选直接关系，单靶标功能实验需回到全文核对。",
+    "quote": "Two O2-activated genes, bZIP17 and NAKED ENDOSPERM2 ( NKD2 )",
+    "assays": ["O2体内结合位点", "B73与B73 o2差异表达整合"], "tissue": "玉米胚乳", "stage": "本轮可读摘要未注明DAP", "genotype": "B73与B73 o2",
+    "audit": "人工核对原始摘要；正文受正常访问限制，未升级逐靶标实验强度；2026-10-08",
+    "limitations": "不把高通量候选集合全部升级为已逐一验证；未用另一研究的实验补到本论文名下。"
+  },
+  {
+    "source_symbol": "O2", "target_symbol": "bZIP17", "relation": "CANDIDATE_DIRECT_TARGET",
+    "support_level": "high_throughput_candidate", "doi": "10.1105/tpc.18.00392",
+    "title": "Opaque-2 Regulates a Complex Gene Network Associated with Cell Differentiation and Storage Functions of Maize Endosperm",
+    "finding": "2018年B73/B73 o2研究整合O2结合与差异表达，得到186个推定直接靶标和1677个间接靶标，并在摘要报告O2激活NKD2与bZIP17。186个靶标不能全部视为逐一功能验证；本条保留候选直接关系，单靶标功能实验需回到全文核对。",
+    "quote": "Two O2-activated genes, bZIP17 and NAKED ENDOSPERM2 ( NKD2 )",
+    "assays": ["O2体内结合位点", "B73与B73 o2差异表达整合"], "tissue": "玉米胚乳", "stage": "本轮可读摘要未注明DAP", "genotype": "B73与B73 o2",
+    "audit": "人工核对原始摘要；正文受正常访问限制，未升级逐靶标实验强度；2026-10-08",
+    "limitations": "作者报告激活与逐靶标实验认证分开；本轮保守显示候选直接关系。"
+  }
+]

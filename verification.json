@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-22",
+  "static": {
+    "files": 84,
+    "extensions": {
+      "": 2,
+      ".py": 56,
+      ".json": 9,
+      ".svg": 2,
+      ".js": 2,
+      ".css": 1,
+      ".html": 1,
+      ".md": 7,
+      ".R": 1,
+      ".txt": 3
+    }
+  },
+  "local_tests": "test_agent_index_schema (__main__.OfflineChecks.test_agent_index_schema) ... ok\ntest_chain_conversion (__main__.OfflineChecks.test_chain_conversion) ... ok\ntest_graph_workspace_paths (__main__.OfflineChecks.test_graph_workspace_paths) ... skipped 'h5py needed for graph context importer'\ntest_model_forward (__main__.OfflineChecks.test_model_forward) ... skipped 'PyTorch not installed'\ntest_python_and_json (__main__.OfflineChecks.test_python_and_json) ... ok\ntest_stored_query_precision (__main__.OfflineChecks.test_stored_query_precision) ... ok\ntest_trait_provenance (__main__.OfflineChecks.test_trait_provenance) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.123s\n\nOK (skipped=2)\n",
+  "remote_checks": [
+    {
+      "stage": "CPU synthetic integration",
+      "status": "PASS",
+      "tests": "test_agent_index_schema (__main__.OfflineChecks) ... ok\ntest_chain_conversion (__main__.OfflineChecks) ... ok\ntest_graph_workspace_paths (__main__.OfflineChecks) ... ok\ntest_model_forward (__main__.OfflineChecks) ... ok\ntest_python_and_json (__main__.OfflineChecks) ... ok\ntest_stored_query_precision (__main__.OfflineChecks) ... ok\ntest_trait_provenance (__main__.OfflineChecks) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 13.980s\n\nOK\n"
+    },
+    {
+      "stage": "current agent import",
+      "status": "PASS"
+    },
+    {
+      "stage": "relocation equivalence and train wiring",
+      "status": "PASS",
+      "forward_conditions": [
+        "time_attention",
+        "time_mean",
+        "time_no_pos",
+        "no_message"
+      ],
+      "maximum_forward_difference": 0.0,
+      "synthetic_fit_epochs": 2,
+      "ppr_float64_mass_conserved": true,
+      "ablation_import": true
+    }
+  ],
+  "scope": "Code reorganization; synthetic CPU tests only; no published performance recomputation or live deployment.",
+  "frontend_syntax": {
+    "portal.js": "PASS",
+    "network.js": "PASS"
+  }
+}

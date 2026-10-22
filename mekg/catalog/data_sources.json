@@ -1,0 +1,14 @@
+[
+ {"filename":"mGRN.csv","url":"https://zenodo.org/api/records/16027369/files/mGRN.csv/content"},
+ {"filename":"mGRN_seed.csv","url":"https://zenodo.org/api/records/16027369/files/mGRN_seed.csv/content"},
+ {"filename":"myb127_binding.xlsx","url":"https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41477-026-02238-3/MediaObjects/41477_2026_2238_MOESM5_ESM.xlsx","format":"xlsx"},
+ {"filename":"myb127_rna.xlsx","url":"https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41477-026-02238-3/MediaObjects/41477_2026_2238_MOESM6_ESM.xlsx","format":"xlsx"},
+ {"filename":"myb127_tables.xlsx","url":"https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41477-026-02238-3/MediaObjects/41477_2026_2238_MOESM3_ESM.xlsx","format":"xlsx"},
+ {"filename":"emf2b_tables.zip","url":"https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13059-026-04049-3/MediaObjects/13059_2026_4049_MOESM2_ESM.zip","format":"zip"},
+ {"filename":"e2f_tables.xlsx","url":"https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41477-026-02386-6/MediaObjects/41477_2026_2386_MOESM3_ESM.xlsx","format":"xlsx"},
+ {"filename":"GSM8353850_Rep1_filtered_matrix.h5","url":"https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8353nnn/GSM8353850/suppl/GSM8353850_Rep1_filtered_matrix.h5"},
+ {"filename":"GSM8353851_Rep2_filtered_matrix.h5","url":"https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8353nnn/GSM8353851/suppl/GSM8353851_Rep2_filtered_matrix.h5"},
+ {"filename":"GSM8353852_Rep3_filtered_matrix.h5","url":"https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8353nnn/GSM8353852/suppl/GSM8353852_Rep3_filtered_matrix.h5"},
+ {"filename":"imprinting_github_tree.json","url":"https://api.github.com/repos/kmhiggins/Imprinting_timeseries_2024/git/trees/main?recursive=1","format":"json"},
+ {"filename":"kil_pmc_lookup.json","url":"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40579219%20AND%20SRC:MED&format=json","format":"json"}
+]

@@ -1,0 +1,10 @@
+[
+ {"filename":"zenodo_mgrn.json","url":"https://zenodo.org/api/records/16027369","format":"json"},
+ {"filename":"myb127.html","url":"https://www.nature.com/articles/s41477-026-02238-3"},
+ {"filename":"emf2b.html","url":"https://link.springer.com/article/10.1186/s13059-026-04049-3"},
+ {"filename":"e2f.html","url":"https://www.nature.com/articles/s41477-026-02386-6"},
+ {"filename":"imprinting.xml","url":"https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12005164/fullTextXML"},
+ {"filename":"kil.html","url":"https://academic.oup.com/plcell/article/37/7/koaf162/8170042"},
+ {"filename":"imprinting_supp.zip","url":"https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12005164/supplementaryFiles","format":"zip"},
+ {"filename":"GSE270866.soft.gz","url":"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE270nnn/GSE270866/soft/GSE270866_family.soft.gz"}
+]

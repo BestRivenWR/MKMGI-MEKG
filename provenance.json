@@ -1,0 +1,549 @@
+{
+  "date": "2026-10-22",
+  "source": "2026-10-20 frozen full code candidate",
+  "scope": "main model, evaluation, MEKG and current research agent",
+  "records": [
+    {
+      "path": "mkmgi/model.py",
+      "source": "workflows/MKMGI_GCN_TimeAttention_20261002/code/model.py",
+      "source_sha256": "749210434f5837147d5b4c1b27b726b7fcb507420b5d4f6853a51d4b0ea47fd5",
+      "adaptations": [],
+      "release_sha256": "749210434f5837147d5b4c1b27b726b7fcb507420b5d4f6853a51d4b0ea47fd5"
+    },
+    {
+      "path": "mkmgi/train.py",
+      "source": "workflows/MKMGI_GCN_TimeAttention_20261002/code/train.py",
+      "source_sha256": "d06b3006ad77d819722856fa95db4d1d401882a52ac0c90a33a70c9746bf6503",
+      "adaptations": [],
+      "release_sha256": "d06b3006ad77d819722856fa95db4d1d401882a52ac0c90a33a70c9746bf6503"
+    },
+    {
+      "path": "mkmgi/background.py",
+      "source": "workflows/MKMGI_GCN_TimeAttention_20261002/code/background.py",
+      "source_sha256": "7969e3908c6a6c081d103bc907e17923852bbbfb77c37af5e2ec0fa76b100b91",
+      "adaptations": [],
+      "release_sha256": "7969e3908c6a6c081d103bc907e17923852bbbfb77c37af5e2ec0fa76b100b91"
+    },
+    {
+      "path": "mkmgi/report.py",
+      "source": "workflows/MKMGI_GCN_TimeAttention_20261002/code/report.py",
+      "source_sha256": "6a30463669d5e3985d52969e4a9cc514b1f24acbfd2832c75d387a9b92a934f7",
+      "adaptations": [],
+      "release_sha256": "6a30463669d5e3985d52969e4a9cc514b1f24acbfd2832c75d387a9b92a934f7"
+    },
+    {
+      "path": "mkmgi/finalize.py",
+      "source": "workflows/MKMGI_GCN_TimeAttention_20261002/code/finalize.py",
+      "source_sha256": "b90d7a0f403737af02e1f7a72992993507a2f8609fa44f13f2de3e59a10ad90a",
+      "adaptations": [],
+      "release_sha256": "b90d7a0f403737af02e1f7a72992993507a2f8609fa44f13f2de3e59a10ad90a"
+    },
+    {
+      "path": "mkmgi/_shared/model.py",
+      "source": "workflows/MKMGI_GCN_Core_20261001/code/model.py",
+      "source_sha256": "db32cabb188fe4e45a0b1baa77ee5b8ec86165baf92bf1298e49624d53cdfd1f",
+      "adaptations": [],
+      "release_sha256": "db32cabb188fe4e45a0b1baa77ee5b8ec86165baf92bf1298e49624d53cdfd1f"
+    },
+    {
+      "path": "mkmgi/_shared/graph_ops.py",
+      "source": "workflows/MKMGI_GCN_Core_20261001/code/graph_ops.py",
+      "source_sha256": "4b77a5b2fd611396a20bf91dda84f31d005888a0259ecf59c2a8934214332145",
+      "adaptations": [],
+      "release_sha256": "4b77a5b2fd611396a20bf91dda84f31d005888a0259ecf59c2a8934214332145"
+    },
+    {
+      "path": "mkmgi/_shared/statistics.py",
+      "source": "workflows/MKMGI_GCN_Core_20261001/code/statistics.py",
+      "source_sha256": "fdc762027a675ba889ee1a4f90522fa76d797fede3d0189896d21edbb80a3495",
+      "adaptations": [],
+      "release_sha256": "fdc762027a675ba889ee1a4f90522fa76d797fede3d0189896d21edbb80a3495"
+    },
+    {
+      "path": "mkmgi/_shared/train.py",
+      "source": "workflows/MKMGI_GCN_Background_20261002/code/train.py",
+      "source_sha256": "9a3bf8b8826633d5db80ccd7f934898997b2e8b5e970c735c59e10855b1b8fc4",
+      "adaptations": [],
+      "release_sha256": "9a3bf8b8826633d5db80ccd7f934898997b2e8b5e970c735c59e10855b1b8fc4"
+    },
+    {
+      "path": "mkmgi/_shared/background.py",
+      "source": "workflows/MKMGI_GCN_Background_20261002/code/background.py",
+      "source_sha256": "e0a2197b6c6bac309f61f6e3699849e7046b7656ac82ed3660e0769638b3acd3",
+      "adaptations": [],
+      "release_sha256": "e0a2197b6c6bac309f61f6e3699849e7046b7656ac82ed3660e0769638b3acd3"
+    },
+    {
+      "path": "mkmgi/_shared/finalize.py",
+      "source": "workflows/MKMGI_GCN_Background_20261002/code/finalize.py",
+      "source_sha256": "cd97049fda50c803f60452a9e2b368365e67a6330779ea6beae116939e6062c7",
+      "adaptations": [],
+      "release_sha256": "cd97049fda50c803f60452a9e2b368365e67a6330779ea6beae116939e6062c7"
+    },
+    {
+      "path": "mkmgi/query.py",
+      "source": "tools/query_prediction.py",
+      "source_sha256": "a9ccc8a5bf6b940237576f64b9b0788a7c9aeb2c825b73a28bd6bf2116abb24e",
+      "adaptations": [],
+      "release_sha256": "a9ccc8a5bf6b940237576f64b9b0788a7c9aeb2c825b73a28bd6bf2116abb24e"
+    },
+    {
+      "path": "evaluation/train_baselines.py",
+      "source": "workflows/MKMGI_TimeGCN_SelectedBenchmarks_20261004/code/train_baselines.py",
+      "source_sha256": "36499eb4dc92b982eb5997b83af4626dd9bc0d3b45f1e08a6257ed59e8a795ea",
+      "adaptations": [],
+      "release_sha256": "36499eb4dc92b982eb5997b83af4626dd9bc0d3b45f1e08a6257ed59e8a795ea"
+    },
+    {
+      "path": "evaluation/run_ablation.py",
+      "source": "workflows/MKMGI_TimeGCN_AUROCPrecision_20261004/code/run_ablation.py",
+      "source_sha256": "40281603606c67fdc679bf2783908de592a5eaa7f36ee8656c6a8dad178a5807",
+      "adaptations": [],
+      "release_sha256": "40281603606c67fdc679bf2783908de592a5eaa7f36ee8656c6a8dad178a5807"
+    },
+    {
+      "path": "evaluation/preview_common.py",
+      "source": "workflows/MKMGI_TimeGCN_AUROCPrecision_20261004/code/preview_common.py",
+      "source_sha256": "501ecf032664b23ca5422a8ff08f680f3a76c35cd56170b549474d64a7c52c09",
+      "adaptations": [
+        {
+          "kind": "workspace_and_freeze_header_only"
+        }
+      ],
+      "release_sha256": "5ce50d04ae85016a8b1f5f43d4874efb3323ac85710d66b8ab7ca9a119489f4f"
+    },
+    {
+      "path": "evaluation/benchmark_common.py",
+      "source": "workflows/MKMGI_TimeGCN_SelectedBenchmarks_20261004/code/benchmark_common.py",
+      "source_sha256": "02e9b26447ea30ae295fb641a9da0fd251a23c948d551804e7bc0fb254b4088a",
+      "adaptations": [
+        {
+          "kind": "workspace_and_freeze_header_only"
+        }
+      ],
+      "release_sha256": "d5b1ea37966256934ff279d71ee3c3c1a544f8c5fc3ad768487da75926eb3de6"
+    },
+    {
+      "path": "evaluation/run_ppr_float64.py",
+      "source": "workflows/MKMGI_TimeGCN_SelectedBenchmarks_20261004/code/run_ppr_float64.py",
+      "source_sha256": "31b46cdf0d7086d4e3c8bc3a0b5abb341ec05b6786fca08adda2dd5db2b14328",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "2eee935dd29448043e3dee4144b7d0dd291e3ef2076d187e05b43d0ff00ffb56"
+    },
+    {
+      "path": "mekg/_builders/v3/build_v3.py",
+      "source": "workflows/MEKG_public_v3_20260907/build_v3.py",
+      "source_sha256": "526a3f4873201c97f733ccef28abaded00dd7391f191c99afe9a0cb8f05bdf62",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "1a38de130be4afeee16fa98824f0d5e077d2a5b1e1bded7e4859b1449526af44"
+    },
+    {
+      "path": "mekg/_builders/v3/table_io.py",
+      "source": "workflows/MEKG_public_v3_20260907/table_io.py",
+      "source_sha256": "3978f34acd7fa176a86b03beb0271bb0bfcc85f8e98541deaa4e23118a9fe4cf",
+      "adaptations": [],
+      "release_sha256": "3978f34acd7fa176a86b03beb0271bb0bfcc85f8e98541deaa4e23118a9fe4cf"
+    },
+    {
+      "path": "mekg/_builders/v3/finalize_semantics.py",
+      "source": "workflows/MEKG_public_v3_20260907/finalize_semantics.py",
+      "source_sha256": "0abb7e600e407c646b6f8f3f2c40329ed86700b596b5fa3252431fb733e829da",
+      "adaptations": [],
+      "release_sha256": "0abb7e600e407c646b6f8f3f2c40329ed86700b596b5fa3252431fb733e829da"
+    },
+    {
+      "path": "mekg/_builders/v3/audit_v3.py",
+      "source": "workflows/MEKG_public_v3_20260907/audit_v3.py",
+      "source_sha256": "da9b63fe03067446648ea5b4bf1763372ded77027827f42f3618b11dc115864b",
+      "adaptations": [],
+      "release_sha256": "da9b63fe03067446648ea5b4bf1763372ded77027827f42f3618b11dc115864b"
+    },
+    {
+      "path": "mekg/_builders/v3/import_context.py",
+      "source": "workflows/MEKG_public_v3_20260907/import_context.py",
+      "source_sha256": "f8f3ff163000032a6892e7608ddd90d980be5142de22b9fa1562694514cdf2ae",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "93663c2f5f9f6054c3f3aa7d5f169744c561d58836cdcf808a8a0f6ba8011406"
+    },
+    {
+      "path": "mekg/catalog/data_sources.json",
+      "source": "workflows/MEKG_public_v3_20260907/data_sources.json",
+      "source_sha256": "1e5b54395729c2480db608b6130cbe7b1e3908e3205d9a9de4adea4d72d02384",
+      "adaptations": [],
+      "release_sha256": "1e5b54395729c2480db608b6130cbe7b1e3908e3205d9a9de4adea4d72d02384"
+    },
+    {
+      "path": "mekg/catalog/discovery_sources.json",
+      "source": "workflows/MEKG_public_v3_20260907/discovery_sources.json",
+      "source_sha256": "5992a21e1fd45730f4f3cd9f66ca85117f8506c38a1f54387e7cf2ef748dcec8",
+      "adaptations": [],
+      "release_sha256": "5992a21e1fd45730f4f3cd9f66ca85117f8506c38a1f54387e7cf2ef748dcec8"
+    },
+    {
+      "path": "mekg/catalog/extra_sources.json",
+      "source": "workflows/MEKG_public_v3_20260907/extra_sources.json",
+      "source_sha256": "7a565ca7bc72f5b3363940dd2a230861abd6abb5c3c5c63854aa2d4796e8e0cf",
+      "adaptations": [],
+      "release_sha256": "7a565ca7bc72f5b3363940dd2a230861abd6abb5c3c5c63854aa2d4796e8e0cf"
+    },
+    {
+      "path": "mekg/download.py",
+      "source": "workflows/MEKG_public_v3_20260907/acquire_v3.py",
+      "source_sha256": "b99a8a02e6a1109419161ba5395a44a5e6a4d967dfe437aeb22e3102b6e7c55b",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "7abd68320e2641d64de4c309af471c2cb87c3ead2854421a107cbb851b0f1f5e"
+    },
+    {
+      "path": "mekg/_builders/v31/build_v31.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/build_v31.py",
+      "source_sha256": "3375aa75c8b2e530e035834c7d2a6192a6daa05f2e5ebc0a3605d68ba344104e",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "ff5e04534139cfdc26e7f15bc6d7549f49d97c32eaf126be97ea3fdaa5bb9d37"
+    },
+    {
+      "path": "mekg/_builders/v31/coordinate_tools.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/coordinate_tools.py",
+      "source_sha256": "cda59da8478ae6b5e451f876713bc71955d8795eee329d2b3354ae3306220533",
+      "adaptations": [],
+      "release_sha256": "cda59da8478ae6b5e451f876713bc71955d8795eee329d2b3354ae3306220533"
+    },
+    {
+      "path": "mekg/_builders/v31/import_cells.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/import_cells.py",
+      "source_sha256": "6ef13a4e41ca500155a17ea4103911d3ee9050ed073fee73755cc51c1a285005",
+      "adaptations": [],
+      "release_sha256": "6ef13a4e41ca500155a17ea4103911d3ee9050ed073fee73755cc51c1a285005"
+    },
+    {
+      "path": "mekg/_builders/v31/import_tss.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/import_tss.py",
+      "source_sha256": "0b4ca0b9b93737fc400f485efea8ff74cc56d8db32c43ca4fef13d4816cdf7fc",
+      "adaptations": [],
+      "release_sha256": "0b4ca0b9b93737fc400f485efea8ff74cc56d8db32c43ca4fef13d4816cdf7fc"
+    },
+    {
+      "path": "mekg/_builders/v31/query_base_v3.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/query_base_v3.py",
+      "source_sha256": "4d216164990ad1b7d5f2c81123dbf7ee8f536613cfdf6a14395cb0735c04c061",
+      "adaptations": [],
+      "release_sha256": "4d216164990ad1b7d5f2c81123dbf7ee8f536613cfdf6a14395cb0735c04c061"
+    },
+    {
+      "path": "mekg/_builders/v31/audit_tf_mapping.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/audit_tf_mapping.py",
+      "source_sha256": "72f7649bda9c3cc44598f289340cd32405892f2adc8050b616df2c740ee65127",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "f527931052edd67fa44b9861d14de6a3dc7f4887f647c4642d5fc8a12c9b1ba5"
+    },
+    {
+      "path": "mekg/_builders/v31/export_seurat.R",
+      "source": "workflows/MEKG_public_v3_1_20260907/export_seurat.R",
+      "source_sha256": "ffa5cf94d6adcf57436eb5aa9d77c6bc175b95683303b40af20d6f7dca7a3966",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "9f8f3e70a38145a1be15a296198cca9569670fd1c038d28e220cb32af6e1fc35"
+    },
+    {
+      "path": "mekg/_builders/v31/audit_release.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/audit_release.py",
+      "source_sha256": "66eb80c0244d2424264823674e204eaa691b75fbe45ebb44c49b974fa9799fc8",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "da8d581c99a31dc30cd5ae7b6db0fb8eea047f0877cf752ef9d3c7e5d4365b82"
+    },
+    {
+      "path": "mekg/_builders/v31/query_v31.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/query_v31.py",
+      "source_sha256": "89d683e3bc65135c2438423cd9a204bace6df90c242eba021ef6387ec4e9fb39",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "b26e5c059f91e97b9c20fecf54e012f561b55b24b83ffd1a9916edcde8f7e444"
+    },
+    {
+      "path": "mekg/_builders/v3/query_v3.py",
+      "source": "workflows/MEKG_public_v3_20260907/query_v3.py",
+      "source_sha256": "4d216164990ad1b7d5f2c81123dbf7ee8f536613cfdf6a14395cb0735c04c061",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "831d23181a66476977fc5c919f0dbcd87ef812aa249e07b2a5877b5a71d2b8dc"
+    },
+    {
+      "path": "mekg/_builders/v31/finalize_v31.py",
+      "source": "workflows/MEKG_public_v3_1_20260907/finalize_v31.py",
+      "source_sha256": "fb6786ad055c213d50f4efc8d9fd65dd7b4b042b66df99b7ba2ddf86a3d8e2f3",
+      "adaptations": [
+        {
+          "kind": "documented_workspace_adapter"
+        }
+      ],
+      "release_sha256": "cc305b26452c6b885d10d8359ec761179fbaf2494934c6e62690cb45eb04537e"
+    },
+    {
+      "path": "mekg/assemble_base.py",
+      "source": "workflows/MKMGI_GNN_KG_v8_20260808/MEKG_public_v2_release_20260808_r2/code/build_mekg_public_v2.py",
+      "source_sha256": "ce1e89a5b3a7cecd4cd31d9bd43a8ad8e1518835b95a97c0120d799b1380dc74",
+      "adaptations": [],
+      "release_sha256": "ce1e89a5b3a7cecd4cd31d9bd43a8ad8e1518835b95a97c0120d799b1380dc74"
+    },
+    {
+      "path": "agent/app.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/app.py",
+      "source_sha256": "baa1ce2f7c9389e52e9e5801b0cc6e2dc8e45f9f8fe90fa01e4b17a01793a76c",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "baa1ce2f7c9389e52e9e5801b0cc6e2dc8e45f9f8fe90fa01e4b17a01793a76c"
+    },
+    {
+      "path": "agent/conversation_agent.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/conversation_agent.py",
+      "source_sha256": "9b3fd7e21cb71d504e97b40a1833939338fa3a2df176419151d47e24ba297b36",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "f7564f891678de2e03566429f7009ba196f4407dcba7e192ec058fff36f6473e"
+    },
+    {
+      "path": "agent/data_access.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/data_access.py",
+      "source_sha256": "8719b55e0096a4aafc0a8307936d18931540522c1e886c7ab25edee31f917594",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "9ef1eae4e11752282395fcb575b3251fa4d0f4ba57094e281f2d03e4f78e6f42"
+    },
+    {
+      "path": "agent/research_tools.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/research_tools.py",
+      "source_sha256": "20defafd759d6350c616d7af53576ba32a1adb64588615c96516b7ac8cb3358e",
+      "adaptations": [],
+      "release_sha256": "20defafd759d6350c616d7af53576ba32a1adb64588615c96516b7ac8cb3358e"
+    },
+    {
+      "path": "agent/research.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/research.py",
+      "source_sha256": "2585fe4b07c6829bf91bfc18a03fbe0c07fdbc20e24ea2d698ca2d80f4a0b5c1",
+      "adaptations": [],
+      "release_sha256": "2585fe4b07c6829bf91bfc18a03fbe0c07fdbc20e24ea2d698ca2d80f4a0b5c1"
+    },
+    {
+      "path": "agent/literature.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/literature.py",
+      "source_sha256": "0ebd6bf9c8f8609441c453b9f2b858769c160c343a48c164b29c4d74d69a48a6",
+      "adaptations": [],
+      "release_sha256": "0ebd6bf9c8f8609441c453b9f2b858769c160c343a48c164b29c4d74d69a48a6"
+    },
+    {
+      "path": "agent/network.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/network.py",
+      "source_sha256": "7667fa387fd5d1fb31e0b7bc68e3d4faee7a2b05e0a85bda368e2a83323fccf1",
+      "adaptations": [],
+      "release_sha256": "7667fa387fd5d1fb31e0b7bc68e3d4faee7a2b05e0a85bda368e2a83323fccf1"
+    },
+    {
+      "path": "agent/public_repository.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/public_repository.py",
+      "source_sha256": "9dcd7b8b21f0da5fbf7bfcd0c1d939f4a003a7659b9abcbc4f5869b6b9708880",
+      "adaptations": [],
+      "release_sha256": "9dcd7b8b21f0da5fbf7bfcd0c1d939f4a003a7659b9abcbc4f5869b6b9708880"
+    },
+    {
+      "path": "agent/public_retrieval.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/public_retrieval.py",
+      "source_sha256": "13887968a5577d688ec2a4e7b7052aa6b2d70c7d05afe7a0e329e82c6f553877",
+      "adaptations": [
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        },
+        {
+          "kind": "path_or_import_adapter",
+          "occurrences": 1
+        }
+      ],
+      "release_sha256": "bbd9432af97e5b708fb30bf3bccb7b2bad6c1f6ed28f726f79da10f2e1c928be"
+    },
+    {
+      "path": "agent/trait_display.py",
+      "source": "workflows/MEKG_ResearchAgent_20261008/trait_display.py",
+      "source_sha256": "d551ba08002027af26c15182060a0c84010f9da040b9950154bc78282a3aebd1",
+      "adaptations": [],
+      "release_sha256": "d551ba08002027af26c15182060a0c84010f9da040b9950154bc78282a3aebd1"
+    },
+    {
+      "path": "agent/static/corn-mark-20261007.svg",
+      "source": "workflows/MEKG_ResearchAgent_20261008/static/corn-mark-20261007.svg",
+      "source_sha256": "525ed87cd8e4c41a9ffe23eb3c211ee6fbd89e04673c1b35e705e9e235a40e06",
+      "adaptations": [],
+      "release_sha256": "525ed87cd8e4c41a9ffe23eb3c211ee6fbd89e04673c1b35e705e9e235a40e06"
+    },
+    {
+      "path": "agent/static/favicon.svg",
+      "source": "workflows/MEKG_ResearchAgent_20261008/static/favicon.svg",
+      "source_sha256": "7f662f43f13f66323a457be6cdce4360d115b2ceade62c6126a0fe7706ae5e25",
+      "adaptations": [],
+      "release_sha256": "7f662f43f13f66323a457be6cdce4360d115b2ceade62c6126a0fe7706ae5e25"
+    },
+    {
+      "path": "agent/static/network.js",
+      "source": "workflows/MEKG_ResearchAgent_20261008/static/network.js",
+      "source_sha256": "fb3e4cf76f739b98fdbfeca4ff2bfd4adf33a64a0c314900a794c4589a904627",
+      "adaptations": [],
+      "release_sha256": "fb3e4cf76f739b98fdbfeca4ff2bfd4adf33a64a0c314900a794c4589a904627"
+    },
+    {
+      "path": "agent/static/portal.css",
+      "source": "workflows/MEKG_ResearchAgent_20261008/static/portal.css",
+      "source_sha256": "b4b30b527829fcc9834401ba7fafe555c8a7ab55467861bc8902ddd31d280432",
+      "adaptations": [],
+      "release_sha256": "b4b30b527829fcc9834401ba7fafe555c8a7ab55467861bc8902ddd31d280432"
+    },
+    {
+      "path": "agent/static/portal.html",
+      "source": "workflows/MEKG_ResearchAgent_20261008/static/portal.html",
+      "source_sha256": "203f4f93675ef9981810a61ee9557029d47908ed7bd92bc9a534f398c3eed7d1",
+      "adaptations": [],
+      "release_sha256": "203f4f93675ef9981810a61ee9557029d47908ed7bd92bc9a534f398c3eed7d1"
+    },
+    {
+      "path": "agent/static/portal.js",
+      "source": "workflows/MEKG_ResearchAgent_20261008/static/portal.js",
+      "source_sha256": "379ab0cd345eeaec36c60d064f8e189e2a2bef6bd9df5a1921b965a9f28ffff3",
+      "adaptations": [],
+      "release_sha256": "379ab0cd345eeaec36c60d064f8e189e2a2bef6bd9df5a1921b965a9f28ffff3"
+    },
+    {
+      "path": "agent/curation/classic_relations.json",
+      "source": "workflows/MEKG_ResearchAgent_20261008/curation/classic_relations.json",
+      "source_sha256": "ee27c2f1efbaa3366c6ec9b37dfcb8c2bd3065ae5be56fa9385fbb4248d4e7fd",
+      "adaptations": [],
+      "release_sha256": "ee27c2f1efbaa3366c6ec9b37dfcb8c2bd3065ae5be56fa9385fbb4248d4e7fd"
+    },
+    {
+      "path": "requirements/model-recorded.txt",
+      "source": "environments/model-recorded.txt",
+      "source_sha256": "6e40a182d81b75d9923340067fff8dc4c939e1c4cd85cbc6b8c693fab5c26fd9",
+      "adaptations": [],
+      "release_sha256": "6e40a182d81b75d9923340067fff8dc4c939e1c4cd85cbc6b8c693fab5c26fd9"
+    },
+    {
+      "path": "requirements/agent-recorded.txt",
+      "source": "environments/agent-recorded.txt",
+      "source_sha256": "101d51d8256a181221db69ff80da4c94d8b17fa68a84ce9aec7d530d912186d5",
+      "adaptations": [],
+      "release_sha256": "101d51d8256a181221db69ff80da4c94d8b17fa68a84ce9aec7d530d912186d5"
+    }
+  ],
+  "new_workspace_adapters_and_documentation": [
+    ".gitattributes",
+    ".gitignore",
+    "agent/settings.py",
+    "agent/setup.py",
+    "CODE_AVAILABILITY.md",
+    "docs/agent.md",
+    "docs/mekg.md",
+    "docs/training.md",
+    "evaluation/ablation_config.json",
+    "evaluation/config.json",
+    "evaluation/eval_support.py",
+    "evaluation/report.py",
+    "LICENSE_PENDING.md",
+    "mekg/build.py",
+    "mekg/mekg_paths.py",
+    "mekg/query.py",
+    "mkmgi/common.py",
+    "mkmgi/config.json",
+    "mkmgi/freeze.py",
+    "mkmgi/prepare.py",
+    "mkmgi/run.py",
+    "README.md",
+    "README_zh.md",
+    "requirements/mekg.txt",
+    "tests/smoke.py",
+    "verification.json"
+  ],
+  "model_forward_relocation_check": "Four conditions, matched weights and synthetic inputs: exact equality"
+}

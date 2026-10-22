@@ -1,0 +1,154 @@
+{
+  "methods": [
+    "time_attention",
+    "LogisticRegression",
+    "RBFSVM",
+    "GradientBoosting",
+    "MLP",
+    "GCN",
+    "PPR"
+  ],
+  "seeds": [
+    20261001,
+    20261002,
+    20261003
+  ],
+  "threads_per_worker": 4,
+  "classical_inner_seed": 20261001,
+  "LogisticRegression_grid": [
+    {
+      "C": 0.001
+    },
+    {
+      "C": 0.01
+    },
+    {
+      "C": 0.1
+    },
+    {
+      "C": 1.0
+    },
+    {
+      "C": 10.0
+    },
+    {
+      "C": 100.0
+    }
+  ],
+  "RBFSVM_grid": [
+    {
+      "C": 0.1,
+      "gamma_factor": 0.1
+    },
+    {
+      "C": 0.1,
+      "gamma_factor": 1.0
+    },
+    {
+      "C": 1.0,
+      "gamma_factor": 0.1
+    },
+    {
+      "C": 1.0,
+      "gamma_factor": 1.0
+    },
+    {
+      "C": 10.0,
+      "gamma_factor": 0.1
+    },
+    {
+      "C": 10.0,
+      "gamma_factor": 1.0
+    }
+  ],
+  "GradientBoosting_grid": [
+    {
+      "max_leaf_nodes": 7,
+      "l2_regularization": 0.0
+    },
+    {
+      "max_leaf_nodes": 7,
+      "l2_regularization": 1.0
+    },
+    {
+      "max_leaf_nodes": 15,
+      "l2_regularization": 0.0
+    },
+    {
+      "max_leaf_nodes": 15,
+      "l2_regularization": 1.0
+    },
+    {
+      "max_leaf_nodes": 31,
+      "l2_regularization": 0.0
+    },
+    {
+      "max_leaf_nodes": 31,
+      "l2_regularization": 1.0
+    }
+  ],
+  "neural_grid": [
+    {
+      "lr": 0.001,
+      "dropout": 0.1
+    },
+    {
+      "lr": 0.001,
+      "dropout": 0.3
+    },
+    {
+      "lr": 0.001,
+      "dropout": 0.5
+    },
+    {
+      "lr": 0.003,
+      "dropout": 0.1
+    },
+    {
+      "lr": 0.003,
+      "dropout": 0.3
+    },
+    {
+      "lr": 0.003,
+      "dropout": 0.5
+    }
+  ],
+  "PPR_grid": [
+    {
+      "restart": 0.05
+    },
+    {
+      "restart": 0.1
+    },
+    {
+      "restart": 0.15
+    },
+    {
+      "restart": 0.3
+    },
+    {
+      "restart": 0.5
+    },
+    {
+      "restart": 0.8
+    }
+  ],
+  "hidden": 64,
+  "weight_decay": 0.001,
+  "max_epochs": 160,
+  "minimum_epochs": 20,
+  "check_every": 5,
+  "patience_checks": 6,
+  "svm_cache_size_MB": 2048,
+  "gradient_boosting_max_iter": 200,
+  "ppr_tolerance": 1e-10,
+  "ppr_max_iter": 2000,
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 2026100129,
+  "k_grid": [
+    10,
+    20,
+    50,
+    100
+  ]
+}

@@ -1,0 +1,10 @@
+# Recorded in the final model's protocol/freeze.json.
+# Python 3.9.19; Linux; recorded GPU NVIDIA GeForce RTX 4070 Ti SUPER.
+# torch wheel local version was 2.2.2+cu121; choose the matching official wheel.
+# This is a recorded core environment, not a newly solved full lockfile.
+torch==2.2.2
+numpy==1.26.3
+pandas==2.2.2
+scikit-learn==1.4.2
+scipy==1.13.0
+joblib==1.4.0

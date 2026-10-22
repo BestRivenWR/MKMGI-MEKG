@@ -1,0 +1,10 @@
+[
+ {"filename":"imprinting_README.md","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/README.md"},
+ {"filename":"timepoint_script_forGH.Rmd","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/timepoint_script_forGH.Rmd"},
+ {"filename":"imprinting_mRNA_forGH.Rmd","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/imprinting_mRNA_forGH.Rmd"},
+ {"filename":"B73_Group1.txt","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/B73_Group1.txt"},
+ {"filename":"B73_Group2.txt","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/B73_Group2.txt"},
+ {"filename":"B73_Group3.txt","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/B73_Group3.txt"},
+ {"filename":"B73_Group4.txt","url":"https://raw.githubusercontent.com/kmhiggins/Imprinting_timeseries_2024/41ecb9e2e277c9bf3a0de10da96eac084bdb6df6/B73_Group4.txt"},
+ {"filename":"GSE270866_merged_seurat.rds.gz","url":"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE270nnn/GSE270866/suppl/GSE270866_merged_seurat.rds.gz","max_bytes":2000000000}
+]
