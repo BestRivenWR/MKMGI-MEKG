@@ -7,6 +7,12 @@ residual relation-GCN layers. MEKG links the resulting gene scores to traceable
 public evidence. A DeepSeek research agent searches literature, retrieves graph
 records and explains the evidence through a web portal.
 
+The submission portal defaults to English and includes an **EN / 中文** switch.
+Search by B73 v5 gene ID or gene symbol; **O2** is the example query. The workspace
+combines model results, research chat, an evidence network and literature/data.
+The portal source was synchronized with the final 22 October 2026 deployment
+on 23 October 2026.
+
 [中文说明](README_zh.md) · [Training & evaluation](docs/training.md) ·
 [Knowledge graph](docs/mekg.md) · [Agent & web portal](docs/agent.md)
 
@@ -76,6 +82,11 @@ export DEEPSEEK_API_KEY=YOUR_PROVIDER_KEY
 python -m uvicorn app:app --app-dir agent --host 127.0.0.1 --port 8788
 ```
 
+Open `http://127.0.0.1:8788/`. The selected language controls the interface and
+new agent answers. The portal supports desktop and mobile layouts; GWAS/QTL
+records appear with other evidence when available. See the [agent guide](docs/agent.md)
+for input requirements, API requests and deployment configuration.
+
 ## Reproducibility
 
 Model equations, training functions, hyperparameter grids and graph operations
@@ -88,5 +99,8 @@ associations support interpretation; they do not establish causal phenotypes.
 Unlabelled genes remain unlabelled in the evaluation interpretation.
 
 Input data, weights and the evidence database are distributed separately.
-**Repository URL, data archive identifiers, software DOI and licence are pending.**
+The code is available at [BestRivenWR/MKMGI-MEKG](https://github.com/BestRivenWR/MKMGI-MEKG).
+Data archive identifiers, an archived software DOI and the software licence are
+pending. API credentials, runtime databases/caches and unpublished raw data are
+excluded from this repository.
 The scope and wording for the manuscript are in [Code availability](CODE_AVAILABILITY.md).

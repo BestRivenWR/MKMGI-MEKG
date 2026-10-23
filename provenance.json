@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-22",
-  "source": "2026-10-20 frozen full code candidate",
+  "date": "2026-10-23",
+  "source": "2026-10-20 frozen source candidate with 2026-10-22 submission portal update",
   "scope": "main model, evaluation, MEKG and current research agent",
   "records": [
     {
@@ -357,31 +357,22 @@
     },
     {
       "path": "agent/app.py",
-      "source": "workflows/MEKG_ResearchAgent_20261008/app.py",
-      "source_sha256": "baa1ce2f7c9389e52e9e5801b0cc6e2dc8e45f9f8fe90fa01e4b17a01793a76c",
-      "adaptations": [
-        {
-          "kind": "path_or_import_adapter",
-          "occurrences": 1
-        }
-      ],
-      "release_sha256": "baa1ce2f7c9389e52e9e5801b0cc6e2dc8e45f9f8fe90fa01e4b17a01793a76c"
+      "source": "submission_portal_20261022/app.py",
+      "source_sha256": "14ebbd9c250073bfbe4500c3e4437bb67487e02f87f34860530421165060fea6",
+      "adaptations": [],
+      "release_sha256": "14ebbd9c250073bfbe4500c3e4437bb67487e02f87f34860530421165060fea6"
     },
     {
       "path": "agent/conversation_agent.py",
-      "source": "workflows/MEKG_ResearchAgent_20261008/conversation_agent.py",
-      "source_sha256": "9b3fd7e21cb71d504e97b40a1833939338fa3a2df176419151d47e24ba297b36",
+      "source": "submission_portal_20261022/conversation_agent.py",
+      "source_sha256": "634b420d1942cf1f8c7806011ba933ea3f0654bf9789f9e4139b942852bdac19",
       "adaptations": [
         {
-          "kind": "path_or_import_adapter",
-          "occurrences": 1
-        },
-        {
-          "kind": "path_or_import_adapter",
-          "occurrences": 1
+          "kind": "runtime_environment_key_lookup",
+          "description": "Retain runtime DEEPSEEK_API_KEY environment lookup"
         }
       ],
-      "release_sha256": "f7564f891678de2e03566429f7009ba196f4407dcba7e192ec058fff36f6473e"
+      "release_sha256": "7d767e35b1197c00724f2aae9c1d3d403a77e5c50cfa13cfe5512624d60381ef"
     },
     {
       "path": "agent/data_access.py",
@@ -469,31 +460,10 @@
     },
     {
       "path": "agent/static/network.js",
-      "source": "workflows/MEKG_ResearchAgent_20261008/static/network.js",
-      "source_sha256": "fb3e4cf76f739b98fdbfeca4ff2bfd4adf33a64a0c314900a794c4589a904627",
+      "source": "submission_portal_20261022/static/network.js",
+      "source_sha256": "e177eb41dd386bd9c59b72c96b5678dd12eeefdec1fc4462841c1bfe6484973c",
       "adaptations": [],
-      "release_sha256": "fb3e4cf76f739b98fdbfeca4ff2bfd4adf33a64a0c314900a794c4589a904627"
-    },
-    {
-      "path": "agent/static/portal.css",
-      "source": "workflows/MEKG_ResearchAgent_20261008/static/portal.css",
-      "source_sha256": "b4b30b527829fcc9834401ba7fafe555c8a7ab55467861bc8902ddd31d280432",
-      "adaptations": [],
-      "release_sha256": "b4b30b527829fcc9834401ba7fafe555c8a7ab55467861bc8902ddd31d280432"
-    },
-    {
-      "path": "agent/static/portal.html",
-      "source": "workflows/MEKG_ResearchAgent_20261008/static/portal.html",
-      "source_sha256": "203f4f93675ef9981810a61ee9557029d47908ed7bd92bc9a534f398c3eed7d1",
-      "adaptations": [],
-      "release_sha256": "203f4f93675ef9981810a61ee9557029d47908ed7bd92bc9a534f398c3eed7d1"
-    },
-    {
-      "path": "agent/static/portal.js",
-      "source": "workflows/MEKG_ResearchAgent_20261008/static/portal.js",
-      "source_sha256": "379ab0cd345eeaec36c60d064f8e189e2a2bef6bd9df5a1921b965a9f28ffff3",
-      "adaptations": [],
-      "release_sha256": "379ab0cd345eeaec36c60d064f8e189e2a2bef6bd9df5a1921b965a9f28ffff3"
+      "release_sha256": "e177eb41dd386bd9c59b72c96b5678dd12eeefdec1fc4462841c1bfe6484973c"
     },
     {
       "path": "agent/curation/classic_relations.json",
@@ -515,6 +485,27 @@
       "source_sha256": "101d51d8256a181221db69ff80da4c94d8b17fa68a84ce9aec7d530d912186d5",
       "adaptations": [],
       "release_sha256": "101d51d8256a181221db69ff80da4c94d8b17fa68a84ce9aec7d530d912186d5"
+    },
+    {
+      "path": "agent/static/submission.html",
+      "source": "submission_portal_20261022/static/submission.html",
+      "source_sha256": "dd44eaeee559c5fffc2d0529e8058cff364a8061bfa9fd58d4d5f8ddea8222a5",
+      "adaptations": [],
+      "release_sha256": "dd44eaeee559c5fffc2d0529e8058cff364a8061bfa9fd58d4d5f8ddea8222a5"
+    },
+    {
+      "path": "agent/static/submission.js",
+      "source": "submission_portal_20261022/static/submission.js",
+      "source_sha256": "7ade9c1c7e4f0d69715e8ddee5f60927543103216f7a2df2db6d49a6bec476c1",
+      "adaptations": [],
+      "release_sha256": "7ade9c1c7e4f0d69715e8ddee5f60927543103216f7a2df2db6d49a6bec476c1"
+    },
+    {
+      "path": "agent/static/submission.css",
+      "source": "submission_portal_20261022/static/submission.css",
+      "source_sha256": "4cd21b5a8242c115e3556262a6926e4e5552b3a3655de9ac36c2b318b26c7108",
+      "adaptations": [],
+      "release_sha256": "4cd21b5a8242c115e3556262a6926e4e5552b3a3655de9ac36c2b318b26c7108"
     }
   ],
   "new_workspace_adapters_and_documentation": [
@@ -543,7 +534,30 @@
     "README_zh.md",
     "requirements/mekg.txt",
     "tests/smoke.py",
-    "verification.json"
+    "verification.json",
+    "submission_verification.json"
   ],
-  "model_forward_relocation_check": "Four conditions, matched weights and synthetic inputs: exact equality"
+  "model_forward_relocation_check": "Four conditions, matched weights and synthetic inputs: exact equality",
+  "updates": [
+    {
+      "date": "2026-10-23",
+      "source_release": "submission_20261022",
+      "base_commit": "aafeddcec39cfe923384f116587dd61032d37763",
+      "scope": "English-default bilingual submission portal and language-aware MEKG research agent; documentation refresh",
+      "removed_obsolete_files": [
+        "agent/static/portal.html",
+        "agent/static/portal.js",
+        "agent/static/portal.css"
+      ],
+      "scientific_code_directories_unchanged": [
+        "mkmgi/",
+        "evaluation/",
+        "mekg/"
+      ],
+      "public_code_adaptations": [
+        "Retain existing deployment settings and runtime DEEPSEEK_API_KEY environment lookup"
+      ],
+      "excluded": "Credentials, production configs, raw data, model artifacts, graph databases, conversations, caches and logs"
+    }
+  ]
 }

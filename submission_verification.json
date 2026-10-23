@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-23",
+  "portal_release": "submission_20261022",
+  "repository": "https://github.com/BestRivenWR/MKMGI-MEKG",
+  "base_commit": "aafeddcec39cfe923384f116587dd61032d37763",
+  "status": "PASS",
+  "scope": "Final submission portal and language-aware MEKG research agent source synchronization",
+  "sources": [
+    {
+      "path": "agent/app.py",
+      "source_sha256": "14ebbd9c250073bfbe4500c3e4437bb67487e02f87f34860530421165060fea6",
+      "release_sha256": "14ebbd9c250073bfbe4500c3e4437bb67487e02f87f34860530421165060fea6",
+      "adaptations": []
+    },
+    {
+      "path": "agent/conversation_agent.py",
+      "source_sha256": "634b420d1942cf1f8c7806011ba933ea3f0654bf9789f9e4139b942852bdac19",
+      "release_sha256": "7d767e35b1197c00724f2aae9c1d3d403a77e5c50cfa13cfe5512624d60381ef",
+      "adaptations": [
+        "Retain runtime DEEPSEEK_API_KEY environment lookup"
+      ]
+    },
+    {
+      "path": "agent/static/submission.html",
+      "source_sha256": "dd44eaeee559c5fffc2d0529e8058cff364a8061bfa9fd58d4d5f8ddea8222a5",
+      "release_sha256": "dd44eaeee559c5fffc2d0529e8058cff364a8061bfa9fd58d4d5f8ddea8222a5",
+      "adaptations": []
+    },
+    {
+      "path": "agent/static/submission.js",
+      "source_sha256": "7ade9c1c7e4f0d69715e8ddee5f60927543103216f7a2df2db6d49a6bec476c1",
+      "release_sha256": "7ade9c1c7e4f0d69715e8ddee5f60927543103216f7a2df2db6d49a6bec476c1",
+      "adaptations": []
+    },
+    {
+      "path": "agent/static/submission.css",
+      "source_sha256": "4cd21b5a8242c115e3556262a6926e4e5552b3a3655de9ac36c2b318b26c7108",
+      "release_sha256": "4cd21b5a8242c115e3556262a6926e4e5552b3a3655de9ac36c2b318b26c7108",
+      "adaptations": []
+    },
+    {
+      "path": "agent/static/network.js",
+      "source_sha256": "e177eb41dd386bd9c59b72c96b5678dd12eeefdec1fc4462841c1bfe6484973c",
+      "release_sha256": "e177eb41dd386bd9c59b72c96b5678dd12eeefdec1fc4462841c1bfe6484973c",
+      "adaptations": []
+    }
+  ],
+  "checks": {
+    "credential_signature_scan": "PASS",
+    "literal_credential_field_scan": "PASS",
+    "data_and_runtime_artifact_scan": "PASS",
+    "private_deployment_path_scan": "PASS",
+    "source_hash_checks": "PASS",
+    "javascript_syntax": [
+      "submission.js",
+      "network.js"
+    ],
+    "existing_synthetic_smoke": {
+      "tests": 7,
+      "passed": 7,
+      "skipped": 0
+    },
+    "agent_code_integration": [
+      "python_ast",
+      "agent_import",
+      "english_default",
+      "chinese_language",
+      "language_validation",
+      "language_prompt",
+      "submission_root",
+      "root_cache_revalidation",
+      "static_assets",
+      "O2_only_example",
+      "language_health_metadata",
+      "api_language_forwarding",
+      "language_cache_separation"
+    ],
+    "static_assets_checked": 5
+  },
+  "scientific_code_unchanged": {
+    "mkmgi": 17,
+    "evaluation": 9,
+    "mekg": 24
+  },
+  "validation_environment": "Isolated temporary code-only checkout; synthetic fixtures only",
+  "provider_api_calls": 0,
+  "research_data_read": false,
+  "excluded_from_publication": [
+    "API credentials and key files",
+    "Production configuration and data manifests",
+    "Raw sequencing and unpublished biological data",
+    "Model inputs, predictions and trained weights",
+    "Knowledge-graph and derived SQLite databases",
+    "Conversations, search caches, logs and runtime state"
+  ],
+  "notes": [
+    "The prior verification.json records the original compact repository validation. This file records the submission portal synchronization.",
+    "The public conversation agent retains the repository's runtime DEEPSEEK_API_KEY lookup in addition to the protected key-file path. No credential value is included.",
+    "Scientific model, evaluation and graph-builder code were not changed by this update."
+  ]
+}

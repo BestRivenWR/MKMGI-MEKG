@@ -2,6 +2,10 @@
 
 本仓库集中提供模型与解释系统代码：首页按“模型训练 → 图谱构建 → 基因查询与解释”阅读即可。
 
+已同步 2026 年 10 月 22 日最终投稿版网页与解释 agent，代码同步日期为 10 月 23 日。
+页面默认英文，支持 **EN / 中文** 切换；按 B73 v5 基因 ID 或 Gene symbol 查询，
+示例为 **O2**。结果页整合模型结果、研究问答、证据网络和文献与数据，支持桌面和手机使用。
+
 | 目录 | 保留内容 |
 |---|---|
 | `mkmgi/` | 时间 Transformer、时间注意力、两层残差关系 GCN；预处理、训练、评价和全基因组预测 |
@@ -23,5 +27,7 @@
 `predictions/genomewide_time_gcn_consensus.tsv.gz`；时间权重来自
 `predictions/genomewide_mean_gates.npz`。MEKG 和联网文献补充证据，不修改模型分数。
 
-此目录是可审阅的 GitHub 上传候选包。许可证按作者要求暂不确定，仓库 URL 和归档 DOI
-待发布后填写。代码来源与改动记录压缩在单个 `provenance.json` 文件中。
+代码已发布到 [BestRivenWR/MKMGI-MEKG](https://github.com/BestRivenWR/MKMGI-MEKG)。
+API 密钥通过环境变量或部署端密钥文件提供；仓库不包含密钥、运行数据库、对话缓存或
+未发表原始数据。许可证暂未确定，软件归档 DOI 和数据存取信息待补充。
+代码来源与改动记录保存在 `provenance.json`，投稿版同步核查见 `submission_verification.json`。

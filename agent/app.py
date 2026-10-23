@@ -2,6 +2,7 @@
 import asyncio,hashlib,json,os,secrets,sqlite3,time
 from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import Literal
 from urllib.parse import urlsplit
 from fastapi import FastAPI,Request,HTTPException
 from fastapi.responses import FileResponse,JSONResponse
@@ -66,14 +67,15 @@ async def security_headers(request,call_next):
     return response
 
 @app.get('/')
-async def index():return FileResponse(ROOT/'static/portal.html')
+async def index():return FileResponse(ROOT/'static/submission.html',headers={'Cache-Control':'no-cache'})
 
 @app.get('/api/health')
 async def health():
     return {'status':'ready','release_id':CONFIG['release_id'],'model_gene_count':RELEASE_INFO.get('model_gene_count'),
        'model_frozen':True,'kg_read_only':True,'provider':'DeepSeek','agent_enabled':True,'endotwin_enabled':False,
        'online_literature_enabled':True,'network_provenance_enabled':True,'user_access_quotas':False,'evidence_total_cap':None,
-       'conversation_enabled':True,'question_aware_retrieval':True,'claim_level_source_audit':True}
+       'conversation_enabled':True,'question_aware_retrieval':True,'claim_level_source_audit':True,
+       'portal_release':'submission_20261022','interface_languages':['en','zh'],'default_language':'en'}
 
 @app.get('/api/info')
 async def info():
@@ -104,6 +106,7 @@ class Ask(BaseModel):
     gene_id:str=Field(min_length=2,max_length=64)
     question:str=Field(min_length=2,max_length=3000)
     conversation_id:str|None=Field(default=None,min_length=20,max_length=100)
+    language:Literal['en','zh']='en'
 
 def authorize_post(request):
     if request.headers.get('x-mekg-request')!='1':raise HTTPException(403,'request_header_required')
@@ -114,12 +117,12 @@ def authorize_post(request):
             raise HTTPException(403,'cross_origin_request_denied')
     # No CORS; require a browser same-origin request or an intentional local API client.
 
-def reserve_job(gene,question,ip,conversation_id=None):
+def reserve_job(gene,question,ip,conversation_id=None,language='en'):
     stamp=time.time()
     from literature import fingerprint
     manifest=json.loads(MANIFEST.read_text())
     key=hashlib.sha256(json.dumps([gene,question,manifest['prediction_sha256'],manifest['kg_sha256'],
-      CONFIG['prompt_version'],CONFIG['model'],fingerprint(gene),conversation_id,
+      CONFIG['prompt_version'],CONFIG['model'],fingerprint(gene),conversation_id,language,
       *[sha256(ROOT/name) for name in ['conversation_agent.py','research_tools.py','research.py','public_retrieval.py','public_repository.py','literature.py']]],ensure_ascii=False).encode()).hexdigest()
     iphash=hashlib.sha256((CONFIG['release_id']+'|'+ip).encode()).hexdigest()
     c=db()
@@ -177,7 +180,7 @@ def conversation_history(conversation_id):
         return out
     finally:c.close()
 
-async def work(token,gene,question,conversation_id):
+async def work(token,gene,question,conversation_id,language='en'):
     events=[]
     async def event(item):
         # Display only operation summaries; never provider reasoning or credentials.
@@ -188,7 +191,7 @@ async def work(token,gene,question,conversation_id):
         async with WORKER:
             await asyncio.to_thread(change_job,token,status='running',updated=time.time())
             history=await asyncio.to_thread(conversation_history,conversation_id)
-            answer=await asyncio.wait_for(run_agent(gene,question,event,history,token),CONFIG['request_deadline_seconds'])
+            answer=await asyncio.wait_for(run_agent(gene,question,event,history,token,language=language),CONFIG['request_deadline_seconds'])
             answer['conversation_id']=conversation_id
             frozen=await asyncio.to_thread(gene_response,gene)
             answer['gene_result']=frozen
@@ -212,11 +215,11 @@ async def ask(body:Ask,request:Request):
     if len(question)<2:raise HTTPException(400,'question_too_short')
     resolved=await asyncio.to_thread(resolve_gene,body.gene_id)
     if resolved['status']!='ok':raise HTTPException(400,resolved['status'])
-    job=await asyncio.to_thread(reserve_job,resolved['gene_id'],question,request.client.host if request.client else 'unknown',body.conversation_id)
+    job=await asyncio.to_thread(reserve_job,resolved['gene_id'],question,request.client.host if request.client else 'unknown',body.conversation_id,body.language)
     if not job['cached'] and job['status']=='queued':
         # A duplicate queued request may already own a task; single-process server plus DB reservation.
         if not any(getattr(t,'job_id',None)==job['job_id'] for t in TASKS):
-            task=asyncio.create_task(work(job['job_id'],resolved['gene_id'],question,job['conversation_id']));task.job_id=job['job_id']
+            task=asyncio.create_task(work(job['job_id'],resolved['gene_id'],question,job['conversation_id'],body.language));task.job_id=job['job_id']
             TASKS.add(task);task.add_done_callback(TASKS.discard)
     return job
 

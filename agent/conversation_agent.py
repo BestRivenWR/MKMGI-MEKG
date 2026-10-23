@@ -143,7 +143,7 @@ def context_bank(session,max_chars=48000):
        'completed_tools':[{'name':json.loads(sig)[0],'arguments':json.loads(sig)[1],'citations':refs} for sig,refs in session.executed.items()],
        'tool_outcomes':session.outcomes}
 
-async def inspect(draft,session,provider):
+async def inspect(draft,session,provider,language='en'):
     units=audit_units(draft,session);checks=[];reviewable=[]
     for unit in units:
         error=validate_relation(unit,session) if unit['kind']=='relation' else preliminary_check(unit,session)
@@ -161,6 +161,7 @@ async def inspect(draft,session,provider):
 promoter_functional只支持启动子活性，不支持已经验证DNA结合。分组总结不可将组内一个靶标的结合证据外推给其他靶标；逐条检查每个成员。评论、综述只能支持明确标注的二手转述，不支持其作者完成了被讨论的实验。
 summary只能概括被引用来源确有的事实，不能新增事实。解释、假设、建议必须与事实层级分清，不需证明建议已做过，但不可把经典已做实验说成全新空白。
 返回JSON {"checks":[{"id":"传入原id","supported":true或false,"reason":"简短具体原因"}]}，每个id恰好一次。不能因命题出现直接调控一词而机械拒绝，应核对原文实验支持。'''
+        instruction += '\nWrite the reason fields in '+('Simplified Chinese.' if language=='zh' else 'English.')
         response=await provider.ask([{'role':'system','content':instruction},{'role':'user','content':json.dumps({'gene_id':session.gene,'question':session.question,'units':reviewable,'evidence':evidence},ensure_ascii=False)}],final=True,max_tokens=5000)
         obj=json.loads(response.get('content') or '{}');rows=obj.get('checks',[])
         ids={u['id'] for u in reviewable}
@@ -170,13 +171,21 @@ summary只能概括被引用来源确有的事实，不能新增事实。解释�
             checks.append({**r,'stage':'source_support_review'})
     return checks
 
-async def run_agent(gene,question,event_callback,history=None,job_id=None):
+def language_instructions(language):
+    if language not in ('en','zh'):raise ValueError('invalid_response_language')
+    language_name='Simplified Chinese' if language=='zh' else 'English'
+    directive=('Response language: '+language_name+'. Write all user-facing titles, summaries, section headings, paragraphs, follow-up questions, assay descriptions and relation findings in this language. Preserve gene identifiers, citation IDs, enumerated schema values and verbatim source quotes. Historical answers and retrieved source text may use another language; do not copy their language into the new answer. Answer directly and concisely; place qualifications only where needed to describe the evidence accurately.')
+    final=FINAL.replace('自然、连贯的中文段落','自然、连贯的段落').replace('中文概述','使用指定语言概述').replace('使用中文归纳','使用指定语言归纳').replace('120字左右','约60–100个英文词或120个汉字')
+    return directive,final+'\n'+directive
+
+async def run_agent(gene,question,event_callback,history=None,job_id=None,language='en'):
+    language_directive,final_instruction=language_instructions(language)
     session=Session(gene,question);provider=Provider();trace=[];audit=[]
     history=history or []
     async def event(stage,message,**details):
         item={'stage':stage,'message':message,**details};trace.append(item);await event_callback(item)
     identity=node_info(gene);aliases=research.lit.search_terms(gene)
-    messages=[{'role':'system','content':SYSTEM},{'role':'user','content':json.dumps({'gene_id':gene,'gene_symbol':identity['symbol'],'recorded_aliases':aliases,'history_for_reference_only':history,'current_question':question},ensure_ascii=False)}]
+    messages=[{'role':'system','content':SYSTEM+'\n'+language_directive},{'role':'user','content':json.dumps({'gene_id':gene,'gene_symbol':identity['symbol'],'recorded_aliases':aliases,'history_for_reference_only':history,'current_question':question,'response_language':language},ensure_ascii=False)}]
     await event('planning','根据你的问题制定检索方向，核对基因别名与上下文')
     queries=None;simple_model=model_only_question(question)
     planning='根据当前问题及历史指代，给出2条针对焦点玉米基因的英文文献检索式，每条最多14个英文词。不要堆满同义词；可一条宽检索、一条针对具体实验/性状。给出JSON {"queries":["...","..."],"focus":"简短中文研究方向"}。只基于已有基因名字，不编文献。'
@@ -244,8 +253,10 @@ async def run_agent(gene,question,event_callback,history=None,job_id=None):
         if stagnant_rounds>=2:
             await event('retrieval_complete','连续补查未取得新的可读证据，依据已有来源回答并保留具体缺口')
             break
+    if simple_model:
+        final_instruction += '\nFor this simple score/rank lookup, give a short direct summary with the requested values and citations. Use at most one short section only if needed. Omit unrelated time-weight discussion, generic boundary sections and repeated cautions. Candidate-priority terminology is sufficient; do not repeat the same qualification in several paragraphs. Leave follow_up_questions empty unless a specific follow-up is useful.'
     await event('writing','整合历史实验、模型结果和问题上下文，形成有来源的回答')
-    messages.append({'role':'user','content':FINAL})
+    messages.append({'role':'user','content':final_instruction})
     draft=None
     for attempt in range(2):
         response=await provider.ask(messages,final=True,max_tokens=6200)
@@ -260,9 +271,9 @@ async def run_agent(gene,question,event_callback,history=None,job_id=None):
             messages += [{'role':'assistant','content':response.get('content') or '{}'},
               {'role':'user','content':json.dumps({'format_repair_only':code,'allowed_citations':list(session.ledger),
                 'allowed_gene_ids':sorted({gene}|set(re.findall(r'Zm00001eb\d{6}',json.dumps(context_bank(session),ensure_ascii=False)))),
-                'required_schema':FINAL},ensure_ascii=False)}]
+                'required_schema':final_instruction},ensure_ascii=False)}]
     await event('checking','逐段核对原文支持、实验层级、模型数值与关系方向')
-    checks=await inspect(draft,session,provider)
+    checks=await inspect(draft,session,provider,language)
     audit.append({'draft':copy.deepcopy(draft),'checks':checks})
     failed=[c for c in checks if not c['supported']]
     if failed and provider.calls<CONFIG['max_api_calls']-1:
@@ -271,7 +282,7 @@ async def run_agent(gene,question,event_callback,history=None,job_id=None):
         response=await provider.ask(messages+[{'role':'assistant','content':json.dumps(draft,ensure_ascii=False)}, {'role':'user','content':json.dumps(repair,ensure_ascii=False)}],final=True,max_tokens=6200)
         try:
             revised=validate(normalize(json.loads(response['content'])),session)
-            checks=await inspect(revised,session,provider);draft=revised
+            checks=await inspect(revised,session,provider,language);draft=revised
             audit.append({'draft':copy.deepcopy(draft),'checks':checks})
         except (ValueError,KeyError,TypeError):pass
     by_id={c['id']:c for c in checks};published=copy.deepcopy(draft);removed=[]
@@ -286,7 +297,8 @@ async def run_agent(gene,question,event_callback,history=None,job_id=None):
     if not by_id['summary']['supported']:
         # No generic filter-warning summary; extract an already-supported lead.
         first=next((u for s in published['sections'] for u in s['items'] if u['kind'] not in ['boundary','recommendation']),None)
-        published['summary']={'text':first['text'] if first else '本次可读来源尚不足以回答这个具体问题；可以换用旧基因号、指定论文或更具体的实验条件继续检索。','citations':first['citations'] if first else []}
+        fallback=('本次可读来源尚不足以回答这个问题。可提供旧基因号、论文或具体实验条件继续检索。' if language=='zh' else 'The retrieved sources do not yet answer this question. Try an older gene ID, a specific paper or experimental context.')
+        published['summary']={'text':first['text'] if first else fallback,'citations':first['citations'] if first else []}
         removed.append({'item':draft['summary'],**by_id['summary']})
     relations=[]
     for i,r in enumerate(draft['relations']):
@@ -301,7 +313,7 @@ async def run_agent(gene,question,event_callback,history=None,job_id=None):
     used={c for u in audit_units(published,session) for c in u.get('citations',[]) if c in session.ledger}
     evidence=[session.ledger[c] for c in sorted(used,key=lambda x:int(x[1:]))]
     await event('complete','回答已完成；可查看引用、关系来源或继续追问')
-    return {'gene_id':gene,'question':question,'answer':published,'evidence':evidence,
+    return {'gene_id':gene,'question':question,'language':language,'answer':published,'evidence':evidence,
       'trace':trace,'search':{k:v for k,v in discovery.items() if k!='papers'},
       'audit':{'automatic_not_independent_expert_review':True,'revisions':audit,'removed_items':removed,
          'read_paper_keys':[f['details']['paper_key'] for f in session.ledger.values() if f.get('origin')=='online_literature' and f['details'].get('reading_level')!='metadata']},

@@ -15,8 +15,9 @@
   fit(){if(!this.bounds)return;const b=this.bounds,k=Math.min(1.1,960/(b.maxx-b.minx+130),450/(b.maxy-b.miny+100));this.transform={k,x:520-k*(b.minx+b.maxx)/2,y:260-k*(b.miny+b.maxy)/2};this.apply();}
   draw(){
    const all=[...this.edges.values()].filter(e=>this.layers.has(e.layer));const active=new Set([this.root]);all.forEach(e=>{active.add(e.source);active.add(e.target);});
-   this.host.replaceChildren();if(all.length===0){const p=document.createElement('p');p.className='muted';p.textContent='当前筛选未显示关系。无网络连接不影响读取该基因的组学预测。';this.host.append(p);return;}
-   const svg=make('svg',{viewBox:'0 0 1040 520',role:'img','aria-label':'真实PPI、本项目和公共证据关系网络'});this.svg=svg;
+   const label=(en,zh)=>window.MEKGLabel?window.MEKGLabel(en,zh):en;
+   this.host.replaceChildren();if(all.length===0){const p=document.createElement('p');p.className='muted';p.textContent=label('No relationships in this view.','当前视图暂无关系。');this.host.append(p);return;}
+   const svg=make('svg',{viewBox:'0 0 1040 520',role:'img','aria-label':label('Gene network: published evidence, PPI and model-input relationships','基因网络：已发表证据、PPI 与模型输入关系')});this.svg=svg;
    const defs=make('defs');for(const [layer,c] of Object.entries(colors)){const marker=make('marker',{id:'arrow-'+layer,markerWidth:7,markerHeight:7,refX:7,refY:3.5,orient:'auto',markerUnits:'userSpaceOnUse'});marker.append(make('path',{d:'M0 0L7 3.5L0 7Z',fill:c}));defs.append(marker);}svg.append(defs);
    const world=make('g');this.world=world;svg.append(world);const pos=new Map([[this.root,{x:0,y:0}]]),groups={};
    const votes=new Map();for(const e of all){for(const id of [e.source,e.target]){if(id===this.root)continue;if(!votes.has(id))votes.set(id,{});const v=votes.get(id);v[e.layer]=(v[e.layer]||0)+1;}}
@@ -33,16 +34,20 @@
     const path=make('path',{d:`M${a.x+dx/len*startRadius} ${a.y+dy/len*startRadius}Q${(a.x+b.x)/2-dy/len*curve} ${(a.y+b.y)/2+dx/len*curve} ${b.x-dx/len*endRadius} ${b.y-dy/len*endRadius}`,fill:'none',stroke:colors[e.layer],'stroke-width':['classic_experimental','public_experimental'].includes(e.layer)?2.3:1.35,opacity:['classic_experimental','public_experimental'].includes(e.layer)?.9:.55,class:'network-edge',tabindex:0,role:'button','aria-label':e.source+' '+e.predicate+' '+e.target});
     if(['literature_reported','public_association','model_regulatory','project_inferred'].includes(e.layer))path.setAttribute('stroke-dasharray',e.layer==='project_inferred'?'6 3':'3 4');
     if(e.directed)path.setAttribute('marker-end','url(#arrow-'+e.layer+')');
-    path.append(make('title',{},`${e.source} ${e.predicate} ${e.target}\n${e.support}`));path.addEventListener('click',ev=>{ev.stopPropagation();this.selectEdge(e,path);});path.addEventListener('keydown',ev=>{if(ev.key==='Enter')this.selectEdge(e,path);});world.append(path);
+    const edgeGroup=make('g',{tabindex:0,role:'button','aria-label':`${e.source} ${e.predicate} ${e.target}`,class:'network-edge-target'});
+    for(const attr of ['tabindex','role','aria-label'])path.removeAttribute(attr);
+    const hit=make('path',{d:path.getAttribute('d'),fill:'none',stroke:'transparent','stroke-width':16,'pointer-events':'stroke','aria-hidden':'true'});
+    edgeGroup.append(make('title',{},`${e.source} ${e.predicate} ${e.target}`),hit,path);
+    edgeGroup.addEventListener('click',ev=>{ev.stopPropagation();this.selectEdge(e,path);});edgeGroup.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();this.selectEdge(e,path);}});world.append(edgeGroup);
     for(const id of [e.source,e.target]){if(!connected.has(id))connected.set(id,[]);connected.get(id).push(path);}
    }
    for(const [id,p] of pos){const n=this.nodes.get(id)||{id,label:id};const focus=id===this.root,r=focus?35:13,g=make('g',{transform:`translate(${p.x} ${p.y})`,tabindex:0,role:'button',class:'network-node','aria-label':n.label+' '+id});
     if(focus)g.append(make('circle',{r:46,fill:'#e8f1eb',stroke:'#d2e4d7','stroke-width':1}));
     g.append(make('circle',{r,fill:focus?'#196b50':'#fff',stroke:focus?'#196b50':colors[p.layer],'stroke-width':focus?2:2.4}));
     if(!focus)g.append(make('circle',{r:4,fill:colors[p.layer],opacity:.8}));
-    const display=n.label===id?'v5:'+id.replace('Zm00001eb',''):n.label;
+    const display=n.label===id?'v5:'+id.replace('Zm00001eb',''):String(n.label).toLowerCase()==='o2'?'O2':n.label;
     g.append(make('text',{x:0,y:focus?5:29,'text-anchor':'middle','font-size':focus?16:10,'font-weight':focus?650:500,fill:focus?'#fff':'#344e44'},display.length>18?display.slice(0,16)+'…':display));
-    if(focus)g.append(make('text',{x:0,y:64,'text-anchor':'middle','font-size':11,fill:'#196b50'},'查询基因'));
+    if(focus)g.append(make('text',{x:0,y:64,'text-anchor':'middle','font-size':11,fill:'#196b50'},label('Query gene','查询基因')));
     g.append(make('title',{},`${n.label}\n${id}\n${n.description||''}`));
     const choose=()=>{this.options.onNode(n,(connected.get(id)||[]).length);};g.addEventListener('click',ev=>{ev.stopPropagation();choose();});g.addEventListener('keydown',ev=>{if(ev.key==='Enter')choose();});
     g.addEventListener('pointerenter',()=>{world.querySelectorAll('.network-edge').forEach(x=>x.style.opacity='.12');(connected.get(id)||[]).forEach(x=>x.style.opacity='.95');});
@@ -50,7 +55,7 @@
     world.append(g);
    }
    this.host.append(svg);this.fit();let drag=null;
-   svg.addEventListener('pointerdown',ev=>{if(ev.target.closest('.network-node')||ev.target.closest('.network-edge'))return;drag={x:ev.clientX,y:ev.clientY,tx:this.transform.x,ty:this.transform.y};svg.setPointerCapture(ev.pointerId);});
+   svg.addEventListener('pointerdown',ev=>{if(ev.target.closest('.network-node')||ev.target.closest('.network-edge-target'))return;drag={x:ev.clientX,y:ev.clientY,tx:this.transform.x,ty:this.transform.y};svg.setPointerCapture(ev.pointerId);});
    svg.addEventListener('pointermove',ev=>{if(!drag)return;const scale=1040/svg.getBoundingClientRect().width;this.transform.x=drag.tx+(ev.clientX-drag.x)*scale;this.transform.y=drag.ty+(ev.clientY-drag.y)*scale;this.apply();});
    svg.addEventListener('pointerup',()=>{drag=null;});svg.addEventListener('wheel',ev=>{if(!ev.ctrlKey&&!ev.shiftKey)return;ev.preventDefault();this.zoom(ev.deltaY<0?1.15:1/1.15);},{passive:false});
   }
